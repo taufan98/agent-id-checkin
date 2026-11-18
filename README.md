@@ -61,9 +61,9 @@ deployment at the mock.
 forge script script/Deploy.s.sol --rpc-url <BSC_RPC_URL> --private-key <DEPLOYER_KEY> --broadcast
 ```
 
-- Deployment gas (measured on a local chain, same bytecode): **931,278 gas**
+- Deployment gas (measured on a local chain, same bytecode, solc 0.8.20): **947,952 gas**
   (runtime 4,052 bytes, initcode 4,327 bytes). At 0.1 gwei that is about
-  0.000093 BNB; at 1 gwei about 0.00093 BNB. Check the live gas price before
+  0.000095 BNB; at 1 gwei about 0.00095 BNB. Check the live gas price before
   deploying.
 - After deployment, verify the source on BscScan (Contracts → Verify &
   Publish), then set the deployed address as `contractAddress` in
