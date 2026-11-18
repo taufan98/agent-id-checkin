@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>AgentCheck — Daily Check-in for Agent ID Holders</title>
+<style>
+  body { font-family: system-ui, -apple-system, sans-serif; max-width: 640px; margin: 2rem auto; padding: 0 1rem; color: #222; }
+  h1 { font-size: 1.6rem; margin-bottom: 0.2rem; }
+  p { line-height: 1.5; }
+  .card { border: 1px solid #ddd; border-radius: 10px; padding: 1rem 1.2rem; margin: 1rem 0; }
+  button { background: #f0b90b; border: none; border-radius: 8px; padding: 0.7rem 1.4rem; font-size: 1rem; cursor: pointer; }
+  button:disabled { background: #ddd; cursor: not-allowed; }
+  button.secondary { background: #eee; }
+  #status { min-height: 1.4em; margin: 0.5rem 0; }
+  .stats { display: flex; gap: 2rem; flex-wrap: wrap; }
+  .stats div b { display: block; font-size: 1.5rem; }
+  ol { padding-left: 1.4rem; }
+  small { color: #777; }
+</style>
+<script src="https://cdn.jsdelivr.net/npm/ethers@6.13.2/dist/ethers.umd.min.js"></script>
+<script src="config.js"></script>
+</head>
+<body>
+  <h1>AgentCheck</h1>
+  <p>One free check-in per day, only for Agent ID holders. Your Agent ID is
+  checked on-chain — no Agent ID, no check-in. No fees, no token, no sign-up.
+  Just show up, once a day, and keep your streak going.</p>
+
+  <div class="card">
+    <button id="connectBtn">Connect wallet</button>
+    <span id="walletAddress"></span>
+    <p id="status"></p>
+    <div class="stats">
+      <div><b id="myTotal">—</b>Total check-ins</div>
+      <div><b id="myStreak">—</b>Current streak (days)</div>
+      <div><b id="doneToday">—</b>Checked in today</div>
+      <div><b id="hasAgentId">—</b>Holds an Agent ID</div>
+    </div>
+    <p><button id="checkInBtn" disabled>Check in</button></p>
+    <small>The check-in is a transaction you review and sign in your own
+    wallet. It costs only network gas. This page never asks for a seed phrase,
+    private key, or pairing code.</small>
+  </div>
+
+  <div class="card">
+    <h2>Leaderboard</h2>
+    <p><span id="participantCount">—</span> Agent ID holders have checked in.</p>
+    <ol id="leaderboard"><li>Loading…</li></ol>
+    <button id="refreshBtn" class="secondary">Refresh</button>
+  </div>
+
+  <p><small>AgentCheck is a community project built for the Agent ID
+  Hackathon. It holds no funds, has no owner, and promises no returns —
+  the streak is simply a public record of showing up.</small></p>
+
+  <script src="app.js"></script>
+</body>
+</html>
